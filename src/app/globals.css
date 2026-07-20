@@ -1,17 +1,88 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Colors */
+  --cream: #F5F1E8;
+  --forest-green: #2D5A3D;
+  --gold: #F4D03F;
+  --brown: #8B5A2B;
+  --brown-dark: #6B4423;
+  --white: #FFFFFF;
+  --text-dark: #2C2C2C;
+  --text-light: #555555;
+  --gold-dark: #B8860B;
+  
+  /* Typography */
+  --font-heading: var(--font-poppins);
+  --font-body: var(--font-inter);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--cream);
+  color: var(--text-dark);
+  font-family: var(--font-body);
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--brown);
+}
+
+a {
+  color: var(--forest-green);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--brown);
+}
+
+/* Utility classes */
+.bg-brown {
+  background-color: var(--brown);
+}
+
+.bg-brown-dark {
+  background-color: var(--brown-dark);
+}
+
+.bg-forest-green {
+  background-color: var(--forest-green);
+}
+
+.bg-cream {
+  background-color: var(--cream);
+}
+
+.bg-white {
+  background-color: var(--white);
+}
+
+.text-brown {
+  color: var(--brown);
+}
+
+.text-forest-green {
+  color: var(--forest-green);
+}
+
+.text-gold {
+  color: var(--gold);
+}
+
+.text-white {
+  color: var(--white);
+}
+
+.border-brown {
+  border-color: var(--brown);
+}
+
+.border-forest-green {
+  border-color: var(--forest-green);
 }
