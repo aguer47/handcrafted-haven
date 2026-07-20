@@ -48,11 +48,7 @@ export default function CustomerReviews() {
     textAlign: 'center'
   };
 
-  const gridStyle: React.CSSProperties = {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(1, 1fr)',
-    gap: '1.5rem'
-  };
+
 
   const cardContentStyle: React.CSSProperties = {
     padding: '1.5rem'
@@ -92,7 +88,7 @@ export default function CustomerReviews() {
         <h3 style={headingStyle}>
           Customer Reviews
         </h3>
-        <div style={gridStyle}>
+        <div className="grid-reviews">
           {reviews.map((review, index) => (
             <Card key={index}>
               <div style={cardContentStyle}>

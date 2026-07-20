@@ -5,13 +5,28 @@ export default function Hero() {
   const sectionStyle: React.CSSProperties = {
     backgroundColor: 'var(--forest-green)',
     color: 'white',
-    padding: '5rem 1rem'
+    padding: '5rem 1rem',
+    position: 'relative',
+    overflow: 'hidden'
+  };
+
+  const heroImageStyle: React.CSSProperties = {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    opacity: 0.15,
+    zIndex: 0
   };
 
   const containerStyle: React.CSSProperties = {
     maxWidth: '80rem',
     margin: '0 auto',
-    textAlign: 'center'
+    textAlign: 'center',
+    position: 'relative',
+    zIndex: 1
   };
 
   const headingStyle: React.CSSProperties = {
@@ -39,6 +54,12 @@ export default function Hero() {
 
   return (
     <section style={sectionStyle}>
+      {/* Optional hero image - replace with your own image path! */}
+      <img 
+        src="/images/hero/hero-handcrafted-items.jpg" 
+        alt="Handcrafted items" 
+        style={heroImageStyle} 
+      />
       <div style={containerStyle}>
         <h2 style={headingStyle}>
           Discover Unique Handmade Treasures

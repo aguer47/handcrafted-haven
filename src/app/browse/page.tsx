@@ -13,21 +13,22 @@ interface Product {
   category: string;
   seller: string;
   rating: number;
+  image: string;
 }
 
 const allProducts: Product[] = [
-  { id: 1, name: 'Handwoven Basket', price: 45.00, category: 'home-decor', seller: 'Sarah Crafts', rating: 4.9 },
-  { id: 2, name: 'Ceramic Vase', price: 65.00, category: 'pottery', seller: 'John Pottery', rating: 4.8 },
-  { id: 3, name: 'Leather Wallet', price: 85.00, category: 'textiles', seller: 'Emma Leather', rating: 5.0 },
-  { id: 4, name: 'Wooden Cutting Board', price: 55.00, category: 'woodwork', seller: 'Mike Woodworks', rating: 4.7 },
-  { id: 5, name: 'Silver Earrings', price: 35.00, category: 'jewelry', seller: 'Lisa Jewelry', rating: 4.6 },
-  { id: 6, name: 'Woven Wall Hanging', price: 75.00, category: 'textiles', seller: 'Sarah Crafts', rating: 4.8 },
-  { id: 7, name: 'Ceramic Mug Set', price: 40.00, category: 'pottery', seller: 'John Pottery', rating: 4.5 },
-  { id: 8, name: 'Wooden Bowl', price: 30.00, category: 'woodwork', seller: 'Mike Woodworks', rating: 4.9 },
-  { id: 9, name: 'Beaded Necklace', price: 25.00, category: 'jewelry', seller: 'Lisa Jewelry', rating: 4.7 },
-  { id: 10, name: 'Hand-painted Canvas', price: 120.00, category: 'art-prints', seller: 'Art Studio', rating: 5.0 },
-  { id: 11, name: 'Knitted Scarf', price: 45.00, category: 'textiles', seller: 'Emma Knits', rating: 4.6 },
-  { id: 12, name: 'Wooden Picture Frame', price: 35.00, category: 'woodwork', seller: 'Mike Woodworks', rating: 4.4 }
+  { id: 1, name: 'Handwoven Basket', price: 45.00, category: 'home-decor', seller: 'Sarah Crafts', rating: 4.9, image: '/images/products/basket-handwoven.jpg' },
+  { id: 2, name: 'Ceramic Vase', price: 65.00, category: 'pottery', seller: 'John Pottery', rating: 4.8, image: '/images/products/ceramic-vase-blue.jpg' },
+  { id: 3, name: 'Leather Wallet', price: 85.00, category: 'textiles', seller: 'Emma Leather', rating: 5.0, image: '/images/products/leather-wallet-brown.jpg' },
+  { id: 4, name: 'Wooden Cutting Board', price: 55.00, category: 'woodwork', seller: 'Mike Woodworks', rating: 4.7, image: '/images/products/cutting-board-wooden.jpg' },
+  { id: 5, name: 'Silver Earrings', price: 35.00, category: 'jewelry', seller: 'Lisa Jewelry', rating: 4.6, image: '/images/products/earings-silver.jpg' },
+  { id: 6, name: 'Woven Wall Hanging', price: 75.00, category: 'textiles', seller: 'Sarah Crafts', rating: 4.8, image: '/images/products/basket-handwoven1.jpg' },
+  { id: 7, name: 'Ceramic Mug Set', price: 40.00, category: 'pottery', seller: 'John Pottery', rating: 4.5, image: '/images/products/ceramic-vase-blue.jpg' },
+  { id: 8, name: 'Wooden Bowl', price: 30.00, category: 'woodwork', seller: 'Mike Woodworks', rating: 4.9, image: '/images/products/cutting-board-wooden.jpg' },
+  { id: 9, name: 'Beaded Necklace', price: 25.00, category: 'jewelry', seller: 'Lisa Jewelry', rating: 4.7, image: '/images/products/earings-silver.jpg' },
+  { id: 10, name: 'Hand-painted Canvas', price: 120.00, category: 'art-prints', seller: 'Art Studio', rating: 5.0, image: '/images/products/basket-handwoven2.jpg' },
+  { id: 11, name: 'Knitted Scarf', price: 45.00, category: 'textiles', seller: 'Emma Knits', rating: 4.6, image: '/images/products/basket-handwoven3.jpg' },
+  { id: 12, name: 'Wooden Picture Frame', price: 35.00, category: 'woodwork', seller: 'Mike Woodworks', rating: 4.4, image: '/images/products/basket-handwoven4.jpg' }
 ];
 
 export default function BrowsePage() {
@@ -105,11 +106,7 @@ export default function BrowsePage() {
     minWidth: '150px'
   };
 
-  const gridStyle: React.CSSProperties = {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(1, 1fr)',
-    gap: '1.5rem'
-  };
+
 
   const productImageStyle: React.CSSProperties = {
     aspectRatio: '1/1',
@@ -202,12 +199,14 @@ export default function BrowsePage() {
               No products found matching your criteria.
             </div>
           ) : (
-            <div style={gridStyle}>
+            <div className="grid-responsive">
               {filteredProducts.map((product) => (
                 <Card key={product.id} onClick={() => {}}>
-                  <div style={productImageStyle}>
-                    <span>Product Image</span>
-                  </div>
+                  <img 
+                    src={product.image} 
+                    alt={product.name} 
+                    style={{ ...productImageStyle, objectFit: 'cover' }} 
+                  />
                   <h3 style={nameStyle}>{product.name}</h3>
                   <p style={priceStyle}>${product.price.toFixed(2)}</p>
                   <p style={sellerStyle}>by {product.seller}</p>

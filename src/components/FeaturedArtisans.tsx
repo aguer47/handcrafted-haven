@@ -12,25 +12,25 @@ const featuredArtisans: Artisan[] = [
   {
     name: 'Sarah Crafts',
     specialty: 'Basket Weaving',
-    image: '/sarah.jpg',
+    image: '/images/artisans/artisan1-Sarah.jpg',
     rating: 4.9
   },
   {
     name: 'John Pottery',
     specialty: 'Ceramics',
-    image: '/john.jpg',
+    image: '/images/artisans/artisan3-jane.jpg',
     rating: 4.8
   },
   {
     name: 'Emma Leather',
     specialty: 'Leather Goods',
-    image: '/emma.jpg',
+    image: '/images/artisans/artisan4-emma.jpg',
     rating: 5.0
   },
   {
     name: 'Mike Woodworks',
     specialty: 'Woodworking',
-    image: '/mike.jpg',
+    image: '/images/artisans/artisan2-mike.jpg',
     rating: 4.7
   }
 ];
@@ -54,11 +54,7 @@ export default function FeaturedArtisans() {
     textAlign: 'center'
   };
 
-  const gridStyle: React.CSSProperties = {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(1, 1fr)',
-    gap: '1.5rem'
-  };
+
 
   const cardContentStyle: React.CSSProperties = {
     textAlign: 'center'
@@ -103,13 +99,15 @@ export default function FeaturedArtisans() {
         <h3 style={headingStyle}>
           Featured Artisans
         </h3>
-        <div style={gridStyle}>
+        <div className="grid-responsive">
           {featuredArtisans.map((artisan) => (
             <Card key={artisan.name}>
               <div style={cardContentStyle}>
-                <div style={photoPlaceholderStyle}>
-                  <span>Photo</span>
-                </div>
+                <img 
+                  src={artisan.image} 
+                  alt={artisan.name} 
+                  style={{ ...photoPlaceholderStyle, objectFit: 'cover' }} 
+                />
                 <h4 style={nameStyle}>{artisan.name}</h4>
                 <p style={specialtyStyle}>{artisan.specialty}</p>
                 <div style={ratingStyle}>

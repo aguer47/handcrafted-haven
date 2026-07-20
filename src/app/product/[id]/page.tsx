@@ -31,9 +31,14 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
     seller: {
       name: 'Sarah Crafts',
       rating: 4.9,
-      bio: 'Master weaver with 15 years of experience creating beautiful handmade baskets.'
+      bio: 'Master weaver with 15 years of experience creating beautiful handmade baskets.',
+      image: '/images/artisans/artisan1-Sarah.jpg'
     },
-    images: ['/basket1.jpg', '/basket2.jpg', '/basket3.jpg'],
+    images: [
+      '/images/products/basket-handwoven.jpg',
+      '/images/products/basket-handwoven1.jpg',
+      '/images/products/basket-handwoven2.jpg'
+    ],
     averageRating: 4.7,
     reviewCount: 2
   };
@@ -72,9 +77,6 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
   };
 
   const contentGridStyle: React.CSSProperties = {
-    display: 'grid',
-    gridTemplateColumns: '1fr',
-    gap: '2rem',
     marginBottom: '3rem'
   };
 
@@ -220,17 +222,22 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
       <Navbar />
       <main style={mainStyle}>
         <div style={containerMaxWidth}>
-          <div style={contentGridStyle}>
+          <div className="product-detail-grid" style={contentGridStyle}>
             {/* Image Gallery */}
             <div style={imageGalleryStyle}>
-              <div style={mainImageStyle}>
-                Main Product Image
-              </div>
+              <img 
+                src={product.images[0]} 
+                alt={product.name} 
+                style={{ ...mainImageStyle, objectFit: 'cover' }} 
+              />
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0.5rem' }}>
-                {[1, 2, 3].map((i) => (
-                  <div key={i} style={thumbnailStyle}>
-                    Thumb {i}
-                  </div>
+                {product.images.map((img, i) => (
+                  <img 
+                    key={i} 
+                    src={img} 
+                    alt={`${product.name} view ${i + 1}`} 
+                    style={{ ...thumbnailStyle, objectFit: 'cover' }} 
+                  />
                 ))}
               </div>
             </div>

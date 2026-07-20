@@ -51,11 +51,7 @@ export default function Categories() {
     textAlign: 'center'
   };
 
-  const gridStyle: React.CSSProperties = {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(1, 1fr)',
-    gap: '1.5rem'
-  };
+
 
   const cardContentStyle: React.CSSProperties = {
     textAlign: 'center',
@@ -85,7 +81,7 @@ export default function Categories() {
         <h3 style={headingStyle}>
           Shop by Category
         </h3>
-        <div style={gridStyle}>
+        <div className="grid-responsive">
           {categories.map((category) => (
             <Card key={category.name} onClick={() => {}}>
               <div style={cardContentStyle}>

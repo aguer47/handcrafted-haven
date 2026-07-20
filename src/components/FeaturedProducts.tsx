@@ -16,28 +16,28 @@ const featuredProducts: Product[] = [
     id: 1,
     name: 'Handwoven Basket',
     price: 45.00,
-    image: '/basket.jpg',
+    image: '/images/products/basket-handwoven.jpg',
     seller: 'Sarah Crafts'
   },
   {
     id: 2,
     name: 'Ceramic Vase',
     price: 65.00,
-    image: '/vase.jpg',
+    image: '/images/products/ceramic-vase-blue.jpg',
     seller: 'John Pottery'
   },
   {
     id: 3,
     name: 'Leather Wallet',
     price: 85.00,
-    image: '/wallet.jpg',
+    image: '/images/products/leather-wallet-brown.jpg',
     seller: 'Emma Leather'
   },
   {
     id: 4,
     name: 'Wooden Cutting Board',
     price: 55.00,
-    image: '/cutting-board.jpg',
+    image: '/images/products/cutting-board-wooden.jpg',
     seller: 'Mike Woodworks'
   }
 ];
@@ -61,11 +61,7 @@ export default function FeaturedProducts() {
     textAlign: 'center'
   };
 
-  const gridStyle: React.CSSProperties = {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(1, 1fr)',
-    gap: '1.5rem'
-  };
+
 
   const imagePlaceholderStyle: React.CSSProperties = {
     aspectRatio: '1/1',
@@ -102,12 +98,14 @@ export default function FeaturedProducts() {
         <h3 style={headingStyle}>
           Featured Products
         </h3>
-        <div style={gridStyle}>
+        <div className="grid-responsive">
           {featuredProducts.map((product) => (
             <Card key={product.id}>
-              <div style={imagePlaceholderStyle}>
-                <span>Product Image</span>
-              </div>
+              <img 
+                src={product.image} 
+                alt={product.name} 
+                style={{ ...imagePlaceholderStyle, objectFit: 'cover' }} 
+              />
               <h4 style={nameStyle}>{product.name}</h4>
               <p style={priceStyle}>${product.price.toFixed(2)}</p>
               <p style={sellerStyle}>by {product.seller}</p>
